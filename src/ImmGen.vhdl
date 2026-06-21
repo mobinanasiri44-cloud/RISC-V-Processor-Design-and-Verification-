@@ -30,8 +30,8 @@ begin
             end case;
         elsif ImmSel = "11" then
             case SIGN is
-                when '0' => imm31_0 <= "000000000000000000" & inst31_7(24 downto 18) & inst31_7(4 downto 0);
-                when '1' => imm31_0 <= "111111111111111111" & inst31_7(24 downto 18) & inst31_7(4 downto 0);
+                when '0' => imm31_0 <= "00000000000000000000" & inst31_7(24 downto 18) & inst31_7(4 downto 0);
+                when '1' => imm31_0 <= "11111111111111111111" & inst31_7(24 downto 18) & inst31_7(4 downto 0);
                 when others => imm31_0 <= "00000000000000000000000000000000";
             end case;
             imm31_0 <= (others => '0');
