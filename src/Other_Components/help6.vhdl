@@ -3,21 +3,18 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity help6 is
     Port ( 
-           -- Inputs from the Instruction Memory/Decode stage
            INST      : in STD_LOGIC_VECTOR (31 downto 0);
            inst11_7  : in STD_LOGIC_VECTOR (4 downto 0);
            inst19_15 : in STD_LOGIC_VECTOR (4 downto 0);
            inst24_20 : in STD_LOGIC_VECTOR (4 downto 0);
            inst31_20 : in STD_LOGIC_VECTOR (31 downto 0);
            
-           -- Data Memory and ALU inputs
            Addr      : in STD_LOGIC_VECTOR (31 downto 0);
            DataW     : in STD_LOGIC_VECTOR (31 downto 0);
            clk       : in STD_LOGIC;
            MemRW     : in STD_LOGIC;
            WBSel     : in STD_LOGIC;
            
-           -- Outputs
            C         : out STD_LOGIC_VECTOR (31 downto 0);
            wb        : out STD_LOGIC_VECTOR (31 downto 0);
            D         : out STD_LOGIC_VECTOR (31 downto 0);
@@ -27,7 +24,6 @@ end help6;
 
 architecture Behavioral of help6 is
 
-    -- Component declaration for the Register File
     component RegisterFile is
         Port ( wb        : in  STD_LOGIC_VECTOR (31 downto 0);
                inst11_7  : in  STD_LOGIC_VECTOR (4 downto 0);
@@ -41,7 +37,6 @@ architecture Behavioral of help6 is
                INST      : in  STD_LOGIC_VECTOR (31 downto 0));
     end component;
 
-    -- Component declaration for help5 (Control + ImmGen + ALU + Data Memory + Muxes)
     component help5 is
         Port ( INST      : in  STD_LOGIC_VECTOR (31 downto 0);
                inst31_20 : in  STD_LOGIC_VECTOR (31 downto 0);
@@ -57,7 +52,6 @@ architecture Behavioral of help6 is
                RegWEn    : out STD_LOGIC);
     end component;
 
-    -- Internal signals used for interconnections
     signal sig_A        : STD_LOGIC_VECTOR (31 downto 0);
     signal sig_B        : STD_LOGIC_VECTOR (31 downto 0);
     signal sig_wb       : STD_LOGIC_VECTOR (31 downto 0);
@@ -66,7 +60,6 @@ architecture Behavioral of help6 is
 
 begin
 
-    -- Instantiate the Register File
     Reg_File : RegisterFile
     port map ( 
                wb        => sig_wb,
@@ -81,7 +74,6 @@ begin
                INST      => INST
     );
 
-    -- Instantiate the combined Control/EX/MEM/WB stage
     H5 : help5
     port map ( 
                INST      => INST,
@@ -98,7 +90,6 @@ begin
                RegWEn    => sig_RegWEn
     );
 
-    -- Map internal signals to the external outputs of help6
     C      <= sig_C;
     wb     <= sig_wb;
     RegWEn <= sig_RegWEn;
