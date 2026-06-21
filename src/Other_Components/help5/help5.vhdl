@@ -3,11 +3,9 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity help5 is
     Port ( 
-           -- Inputs for the Control Logic (help1)
            INST      : in STD_LOGIC_VECTOR (31 downto 0);
            inst31_20 : in STD_LOGIC_VECTOR (31 downto 0);
            
-           -- Inputs for the ALU and Memory (help4)
            A         : in STD_LOGIC_VECTOR (31 downto 0);
            B         : in STD_LOGIC_VECTOR (31 downto 0);
            Addr      : in STD_LOGIC_VECTOR (31 downto 0);
@@ -16,7 +14,6 @@ entity help5 is
            MemRW     : in STD_LOGIC;
            WBSel     : in STD_LOGIC;
            
-           -- Outputs from the unified stage
            C         : out STD_LOGIC_VECTOR (31 downto 0);
            wb        : out STD_LOGIC_VECTOR (31 downto 0);
            RegWEn    : out STD_LOGIC
@@ -49,7 +46,6 @@ architecture Behavioral of help5 is
                wb      : out STD_LOGIC_VECTOR (31 downto 0) );
     end component;
 
-    -- Internal signals to connect the outputs of help1 to the inputs of help4
     signal sig_imm31_0 : STD_LOGIC_VECTOR (31 downto 0);
     signal sig_BSel    : STD_LOGIC;
     signal sig_ALUSel  : STD_LOGIC_VECTOR (1 downto 0);
