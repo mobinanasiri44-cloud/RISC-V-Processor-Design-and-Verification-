@@ -32,7 +32,7 @@ The project was completed as part of a Digital Systems Design course and focuses
 datapath/     : Processor datapath architecture
 simulation/   : RTL simulation waveforms and verification results
 report/       : Final project report
-src/          : VHDL source files
+src/          : VHDL source files including processor components and hierarchical integration modules
 testbench/    : Verification testbenches
 ```
 
