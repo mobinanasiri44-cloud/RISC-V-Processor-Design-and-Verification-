@@ -3,7 +3,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 
 entity RegisterFile is
-    Port ( wb : in STD_LOGIC_VECTOR (31 downto 0);  -- Changed from ALUout to wb
+    Port ( wb : in STD_LOGIC_VECTOR (31 downto 0); 
            inst11_7 : in STD_LOGIC_VECTOR (4 downto 0);
            inst19_15 : in STD_LOGIC_VECTOR (4 downto 0);
            inst24_20 : in STD_LOGIC_VECTOR (4 downto 0);
@@ -54,7 +54,7 @@ signal inst24_20_sig : STD_LOGIC_VECTOR (4 downto 0);
 signal opcode : STD_LOGIC_VECTOR (6 downto 0);
 
 begin
-    process(clk, inst11_7, inst19_15, inst24_20, RegWEn, INST, wb) -- Changed process sensitivity list
+    process(clk, inst11_7, inst19_15, inst24_20, RegWEn, INST, wb) 
     begin
 
         inst11_7_sig <= inst11_7;
@@ -173,7 +173,7 @@ begin
                     when "11110" => x030 <= wb; -- Changed from ALUout to wb
                     when "11111" => x031 <= wb; -- Changed from ALUout to wb
                 end case;
-                D <= wb; -- Changed from ALUout to wb
+                D <= wb; 
             end if;
         end if;
     end process;
