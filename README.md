@@ -6,7 +6,11 @@ This project presents the design, implementation, and verification of a single-c
 
 The processor datapath was developed by integrating the Program Counter (PC), Instruction Memory, Register File, Immediate Generator (ImmGen), Arithmetic Logic Unit (ALU), Data Memory (DMEM), multiplexers, and control logic. Functional verification was performed through RTL simulation and custom testbenches.
 
-The project was completed as part of a Digital Systems Design course and focuses on processor architecture, datapath implementation, instruction execution, memory operations, and hardware verification.
+The project was completed as part of Computer Architecture & Microprocessors course and focuses on processor architecture, datapath implementation, instruction execution, memory operations, and hardware verification.
+
+The baseline assignment in this project required an implementation without a data memory (DMEM). An additional extra-credit task was to incorporate DMEM into the design. I completed both versions.
+
+*Note: The src directory contains only the complete source code for the extra-credit version (the processor with DMEM). However, the accompanying report provides a full description of both architectures — the baseline design without DMEM and the extended design with DMEM — so you can understand the differences and how each one works.
 
 ---
 
